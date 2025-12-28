@@ -1,0 +1,3037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Resources Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Enhanced visual elements */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(126, 34, 206, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Enhanced background gradient with more vibrant colors */
+        body {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(126, 34, 206, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 60% 60%, rgba(240, 171, 252, 0.15) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0e1a 0%, #1a1a2e 25%, #16213e 50%, #0a0e1a 100%);
+            background-size: 800px 800px, 600px 600px, 400px 400px, 300px 300px, 100% 100%;
+            background-attachment: fixed;
+            animation: backgroundShift 30s ease-in-out infinite;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { 
+                background-position: 0% 0%, 100% 100%, 50% 50%, 25% 75%, 0% 0%;
+            }
+            25% { 
+                background-position: 25% 25%, 75% 75%, 75% 25%, 50% 50%, 0% 0%;
+            }
+            50% { 
+                background-position: 50% 50%, 50% 50%, 25% 75%, 75% 25%, 0% 0%;
+            }
+            75% { 
+                background-position: 75% 25%, 25% 75%, 0% 50%, 100% 0%, 0% 0%;
+            }
+        }
+        
+        /* Starry background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e1a 0%, #141a30 100%);
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        
+        .constellation {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(166,187,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            transform-origin: 0 0;
+        }
+        
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            animation: shoot 3s linear infinite;
+        }
+        
+        @keyframes shoot {
+            0% {
+                transform: translateX(-100px) translateY(0) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            20% {
+                transform: translateX(100vw) translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(30, 64, 175, 0.08);
+            backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 60px rgba(126, 34, 206, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(126, 34, 206, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                conic-gradient(from 0deg, rgba(147, 197, 253, 0.05), rgba(126, 34, 206, 0.05), rgba(147, 197, 253, 0.05));
+            transform: rotate(30deg);
+            z-index: -1;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+        
+        header::after {
+            content: '📚';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: twinkleIcon 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { transform: rotate(30deg) scale(1); }
+            50% { transform: rotate(60deg) scale(1.1); }
+        }
+        
+        @keyframes twinkleIcon {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #f0abfc, #93c5fd, #f0abfc, #60a5fa);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(126, 34, 206, 0.6);
+            filter: drop-shadow(0 0 15px rgba(147, 197, 253, 0.4));
+            animation: gradientFlow 4s ease-in-out infinite;
+            position: relative;
+        }
+        
+        h1::before {
+            content: '🎯';
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.7;
+            animation: targetPulse 2s ease-in-out infinite;
+        }
+        
+        h1::after {
+            content: '🧠';
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.7;
+            animation: brainGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes targetPulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
+        }
+        
+        @keyframes brainGlow {
+            0%, 100% { transform: translateY(-50%) translateX(0); opacity: 0.7; }
+            50% { transform: translateY(-60%) translateX(5px); opacity: 1; }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #cbd5e1;
+            position: relative;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            color: #e2e8f0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: tabFloat 8s ease-in-out infinite;
+        }
+        
+        .tab:nth-child(2n) {
+            animation-delay: 1s;
+        }
+        
+        .tab:nth-child(3n) {
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes tabFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+        
+        .tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .tab:hover {
+            background: rgba(126, 34, 206, 0.3);
+            backdrop-filter: blur(30px) saturate(200%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(126, 34, 206, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 0 30px rgba(126, 34, 206, 0.3);
+            border: 1px solid rgba(126, 34, 206, 0.5);
+            animation: none;
+        }
+        
+        .tab:hover::before {
+            left: 100%;
+        }
+        
+        .tab.active {
+            background: rgba(126, 34, 206, 0.5);
+            backdrop-filter: blur(30px) saturate(200%);
+            box-shadow: 
+                0 15px 35px rgba(126, 34, 206, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 40px rgba(126, 34, 206, 0.4);
+            border: 1px solid rgba(126, 34, 206, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .tab-content {
+            display: none;
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, #7e22ce, #ff6b35, transparent);
+            background-size: 200% 100%;
+            animation: borderFlow 4s linear infinite;
+        }
+        
+        @keyframes borderFlow {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .video-section, .resources-section {
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-section::before, .resources-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .video-section:hover::before, .resources-section:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin: 30px 0 20px 0;
+            background: linear-gradient(135deg, #93c5fd, #00d4ff, #7e22ce);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s ease-in-out infinite;
+            border-left: 4px solid transparent;
+            border-image: linear-gradient(45deg, #7e22ce, #00d4ff) 1;
+            padding-left: 15px;
+            filter: drop-shadow(0 2px 8px rgba(126, 34, 206, 0.4));
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 15px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #7e22ce);
+            transition: width 0.5s ease;
+        }
+        
+        .section-title:hover::after {
+            width: calc(100% - 15px);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+        
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .video-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .video-item:hover {
+            transform: translateY(-3px);
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 25px rgba(126, 34, 206, 0.3);
+            border: 1px solid rgba(126, 34, 206, 0.2);
+        }
+        
+        .video-thumb {
+            width: 120px;
+            height: 68px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+        
+        .video-info {
+            flex: 1;
+        }
+        
+        .video-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #f0abfc;
+        }
+        
+        .video-duration {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .resource-card {
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            animation: cardFloat 10s ease-in-out infinite;
+        }
+        
+        .resource-card:nth-child(2n) {
+            animation-delay: 1s;
+        }
+        
+        .resource-card:nth-child(3n) {
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes cardFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-3px) rotate(0.2deg);
+            }
+        }
+        
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(30px) saturate(200%);
+            box-shadow: 
+                0 25px 50px rgba(126, 34, 206, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 40px rgba(126, 34, 206, 0.3);
+            border: 1px solid rgba(126, 34, 206, 0.3);
+            animation: none;
+        }
+        
+        .resource-card:hover::before {
+            left: 100%;
+        }
+        
+        .resource-title {
+            font-weight: 600;
+            background: linear-gradient(135deg, #f0abfc, #00d4ff, #93c5fd);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s ease-in-out infinite;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .resource-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 30px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #f0abfc);
+            transition: width 0.5s ease;
+        }
+        
+        .resource-card:hover .resource-title::after {
+            width: calc(100% - 30px);
+        }
+        
+        .resource-title i {
+            margin-right: 12px;
+            font-size: 1.4rem;
+            background: linear-gradient(45deg, #00d4ff, #7e22ce, #f0abfc);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: iconShimmer 4s ease-in-out infinite;
+        }
+        
+        @keyframes iconShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: rgba(126, 34, 206, 0.5);
+            backdrop-filter: blur(20px) saturate(150%);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(126, 34, 206, 0.6);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 25px rgba(126, 34, 206, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .resource-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .resource-link:hover {
+            background: rgba(126, 34, 206, 0.7);
+            backdrop-filter: blur(25px) saturate(180%);
+            box-shadow: 
+                0 12px 30px rgba(126, 34, 206, 0.5),
+                0 0 30px rgba(126, 34, 206, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.05);
+            border-color: rgba(126, 34, 206, 0.8);
+        }
+        
+        .resource-link:hover::before {
+            left: 100%;
+        }
+        
+        .tips-section {
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tips-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f0abfc, #93c5fd, #00d4ff, transparent);
+            background-size: 200% 100%;
+            animation: borderFlow 5s linear infinite;
+        }
+        
+        .tip-card {
+            background: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(20px) saturate(150%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-left: 4px solid rgba(126, 34, 206, 0.8);
+        }
+        
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(25px) saturate(180%);
+            box-shadow: 
+                0 20px 40px rgba(126, 34, 206, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 0 30px rgba(126, 34, 206, 0.2);
+            border: 1px solid rgba(126, 34, 206, 0.3);
+            border-left: 4px solid rgba(126, 34, 206, 1);
+        }
+        
+        .tip-card:hover::before {
+            left: 100%;
+        }
+        
+        .tip-title {
+            font-weight: 600;
+            color: #93c5fd;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mistakes-section {
+            background: rgba(45, 55, 72, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .mistake-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            border-left: 4px solid rgba(225, 29, 72, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .mistake-item:hover {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(15px);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(225, 29, 72, 0.2);
+            border-left: 4px solid rgba(225, 29, 72, 1);
+        }
+        
+        .mistake-icon {
+            color: #e11d48;
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+        
+        .mistake-content h4 {
+            color: #f0abfc;
+            margin-bottom: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 12px 25px;
+            background: rgba(126, 34, 206, 0.5);
+            backdrop-filter: blur(20px) saturate(150%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(126, 34, 206, 0.6);
+            cursor: pointer;
+            box-shadow: 
+                0 8px 25px rgba(126, 34, 206, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .back-button:hover {
+            background: rgba(126, 34, 206, 0.7);
+            backdrop-filter: blur(25px) saturate(180%);
+            transform: translateX(-8px) translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(126, 34, 206, 0.5),
+                0 0 40px rgba(126, 34, 206, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(126, 34, 206, 0.8);
+        }
+        
+        .back-button:hover::before {
+            left: 100%;
+        }
+                    /* Navigation Styles - Updated */
+.navbar {
+    position: sticky;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    background: rgba(126, 34, 206, 0.3);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background: rgba(126, 34, 206, 0.5);
+    box-shadow: 0 0 15px rgba(126, 34, 206, 0.4);
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(15px);
+    min-width: 200px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    margin-top: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    color: #e2e8f0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.dropdown-item:hover {
+    background: rgba(126, 34, 206, 0.3);
+    transform: translateX(-5px);
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+    margin-left: 5px;
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Mobile Menu */
+.mobile-menu-toggle {
+    display: none;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navbar {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        margin-top: 10px;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 5px;
+        display: none;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="theme.js"></script>
+<div class="stars" id="stars"></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active">🏠 Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link">
+                    🌐 More<span class="dropdown-arrow">▼</span>
+                </a>
+                <div class="dropdown-content">
+                    <a href="resources.html" class="dropdown-item">📚 Resources</a>
+                    <a href="community.html" class="dropdown-item">👥 Communities</a>
+                    <a href="todoprojects.html" class="dropdown-item">🖥️ More Projects</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://erenyadav.netlify.app" class="nav-link">ℹ️ About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>        
+        <header>
+            <h1>AI Learning Resources Hub</h1>
+            <p class="subtitle">Free resources, videos, tips, and guidance for each step of your AI learning journey</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="step1">
+                <i class="fas fa-layer-group"></i> Step 1: Foundations
+            </button>
+            <button class="tab" data-tab="step2">
+                <i class="fas fa-brain"></i> Step 2: ML Basics
+            </button>
+            <button class="tab" data-tab="step3">
+                <i class="fas fa-project-diagram"></i> Step 3: Deep Learning
+            </button>
+            <button class="tab" data-tab="step4">
+                <i class="fas fa-star"></i> Step 4: Specialize
+            </button>
+            <button class="tab" data-tab="step5">
+                <i class="fas fa-rocket"></i> Step 5: Projects
+            </button>
+        </div>
+        
+<!-- Step 1 Content -->
+<div class="tab-content active" id="step1">
+    <h2 class="section-title"><i class="fas fa-layer-group"></i> Step 1: Build Foundations</h2>
+    
+    <div class="content-grid">
+        <div class="video-section">
+            <h3 class="section-title"><i class="fas fa-play-circle"></i> Recommended Videos</h3>
+            
+            <div class="video-container">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UrsmFxEIp5k" title="Python Programming Tutorial" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-list">
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg" alt="Learn Python" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Learn Python - Full Course for Beginners</div>
+                        <div class="video-duration">4:26:52 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/_uQrJ0TkZlc/hqdefault.jpg" alt="Python Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Python Tutorial - Python Programming for Beginners</div>
+                        <div class="video-duration">6:14:07 • Programming with Mosh</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/HGOBQPFzWKo/hqdefault.jpg" alt="Python Beginner" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Python for Everybody - Full University Python Course</div>
+                        <div class="video-duration">13:40:24 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/GB9ByFAIAH4/hqdefault.jpg" alt="NumPy Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Complete NumPy Tutorial</div>
+                        <div class="video-duration">1:50:24 • Keith Galli</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/vmEHCJofslg/hqdefault.jpg" alt="Pandas Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Complete Python Pandas Data Science Tutorial</div>
+                        <div class="video-duration">1:20:56 • Keith Galli</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/3Xc3CA655Y4/hqdefault.jpg" alt="Matplotlib Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Matplotlib Tutorial (Part 1): Creating and Customizing Our First Plots</div>
+                        <div class="video-duration">13:25 • Corey Schafer</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/IX1U3xfeoKE/hqdefault.jpg" alt="Mathematics for ML" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Mathematics for Machine Learning - Complete Course</div>
+                        <div class="video-duration">10:53:29 • My Lesson</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/5fNDPvxmWpg/hqdefault.jpg" alt="Statistics Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Statistics - A Full University Course on Data Science Basics</div>
+                        <div class="video-duration">8:15:22 • freeCodeCamp</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="resources-section">
+            <h3 class="section-title"><i class="fas fa-book-open"></i> Foundation Learning Resources</h3>
+            
+            <div class="resources-grid">
+                <!-- Python for Everybody -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-graduation-cap"></i> Python for Everybody</h4>
+                    <p>Free comprehensive course by Dr. Charles Severance covering Python basics and data structures</p>
+                    <a href="https://www.py4e.com/" class="resource-link">Access Course <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Codecademy Python -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-laptop-code"></i> Codecademy Python</h4>
+                    <p>Interactive Python course with hands-on coding exercises and projects</p>
+                    <a href="https://www.codecademy.com/learn/learn-python-3" class="resource-link">Start Learning <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Khan Academy Math -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-calculator"></i> Khan Academy Math</h4>
+                    <p>Free math fundamentals: linear algebra, calculus, and statistics for AI</p>
+                    <a href="https://www.khanacademy.org/" class="resource-link">Study Math <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- NumPy Documentation -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-book"></i> NumPy Documentation</h4>
+                    <p>Official guide to numerical computing with Python and array operations</p>
+                    <a href="https://numpy.org/doc/" class="resource-link">Read Docs <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Pandas Documentation -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-table"></i> Pandas Documentation</h4>
+                    <p>Complete guide to data manipulation and analysis with pandas</p>
+                    <a href="https://pandas.pydata.org/docs/" class="resource-link">Learn Pandas <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Matplotlib Documentation -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-chart-line"></i> Matplotlib Documentation</h4>
+                    <p>Create static, animated, and interactive visualizations in Python</p>
+                    <a href="https://matplotlib.org/stable/contents.html" class="resource-link">Explore Matplotlib <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Python Fundamentals -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-python"></i> Python Programming Fundamentals</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-code"></i> Variables & Data Types</h4>
+                <p>Master integers, floats, strings, booleans, lists, dictionaries, and tuples. Understanding data types is crucial for AI programming.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-sitemap"></i> Control Flow</h4>
+                <p>Learn if/else statements, for loops, while loops, and exception handling. Essential for implementing algorithms and data processing.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-cogs"></i> Functions & Classes</h4>
+                <p>Write reusable code with functions and understand object-oriented programming. Critical for organizing ML code and building models.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-file-code"></i> File I/O & Data Handling</h4>
+                <p>Read and write files, work with CSV, JSON, and other data formats. Essential for loading datasets and saving results.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-bug"></i> Error Handling & Debugging</h4>
+                <p>Learn to handle exceptions, debug code, and write clean, maintainable programs. Crucial for ML experimentation.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-puzzle-piece"></i> Libraries & Modules</h4>
+                <p>Understand how to import and use libraries. Learn pip for package management and virtual environments for project organization.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Essential Python Libraries -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-toolbox"></i> Essential Python Libraries for AI</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-calculator"></i> NumPy</h4>
+                <p><strong>Purpose:</strong> Numerical computing and array operations<br>
+                <strong>Key Features:</strong> N-dimensional arrays, mathematical functions, broadcasting<br>
+                <strong>Why Important:</strong> Foundation for all ML libraries</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-table"></i> Pandas</h4>
+                <p><strong>Purpose:</strong> Data manipulation and analysis<br>
+                <strong>Key Features:</strong> DataFrames, data cleaning, merging, grouping<br>
+                <strong>Why Important:</strong> Essential for data preprocessing</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-bar"></i> Matplotlib</h4>
+                <p><strong>Purpose:</strong> Data visualization and plotting<br>
+                <strong>Key Features:</strong> Line plots, scatter plots, histograms, customization<br>
+                <strong>Why Important:</strong> Visualize data and model results</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-paint-brush"></i> Seaborn</h4>
+                <p><strong>Purpose:</strong> Statistical data visualization<br>
+                <strong>Key Features:</strong> Beautiful default styles, statistical plots, easy API<br>
+                <strong>Why Important:</strong> Quick exploratory data analysis</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-area"></i> Plotly</h4>
+                <p><strong>Purpose:</strong> Interactive visualizations<br>
+                <strong>Key Features:</strong> Web-based plots, 3D visualizations, dashboards<br>
+                <strong>Why Important:</strong> Interactive data exploration</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-book"></i> Jupyter Notebooks</h4>
+                <p><strong>Purpose:</strong> Interactive development environment<br>
+                <strong>Key Features:</strong> Code cells, markdown, visualizations inline<br>
+                <strong>Why Important:</strong> Standard tool for data science</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mathematical Foundations -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-square-root-alt"></i> Mathematical Foundations for AI</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-vector-square"></i> Linear Algebra</h4>
+                <p><strong>Key Topics:</strong> Vectors, matrices, eigenvalues, eigenvectors<br>
+                <strong>Applications:</strong> Neural networks, PCA, image processing<br>
+                <strong>Why Important:</strong> Core of most ML algorithms</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-line"></i> Calculus</h4>
+                <p><strong>Key Topics:</strong> Derivatives, partial derivatives, chain rule, optimization<br>
+                <strong>Applications:</strong> Gradient descent, backpropagation, optimization<br>
+                <strong>Why Important:</strong> Understanding how algorithms learn</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-dice"></i> Statistics & Probability</h4>
+                <p><strong>Key Topics:</strong> Distributions, Bayes' theorem, hypothesis testing<br>
+                <strong>Applications:</strong> Data analysis, model evaluation, uncertainty quantification<br>
+                <strong>Why Important:</strong> Foundation for understanding data and models</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-project-diagram"></i> Discrete Mathematics</h4>
+                <p><strong>Key Topics:</strong> Set theory, logic, graph theory, combinatorics<br>
+                <strong>Applications:</strong> Algorithms, data structures, complexity analysis<br>
+                <strong>Why Important:</strong> Understanding algorithm efficiency</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-balance-scale"></i> Optimization Theory</h4>
+                <p><strong>Key Topics:</strong> Convex optimization, gradient descent, constrained optimization<br>
+                <strong>Applications:</strong> Model training, hyperparameter tuning<br>
+                <strong>Why Important:</strong> How ML models find best solutions</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-info-circle"></i> Information Theory</h4>
+                <p><strong>Key Topics:</strong> Entropy, mutual information, KL divergence<br>
+                <strong>Applications:</strong> Feature selection, model comparison, compression<br>
+                <strong>Why Important:</strong> Measuring information content and similarity</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Learning Path -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-route"></i> 8-Week Foundation Learning Path</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 1-2: Python Basics</h4>
+                <p>Variables, data types, control flow, functions. Complete basic Python exercises and small projects like calculator or to-do list.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 3: Advanced Python</h4>
+                <p>Object-oriented programming, file handling, error handling, modules. Build more complex projects like a simple web scraper.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 4: NumPy Mastery</h4>
+                <p>Array operations, broadcasting, linear algebra with NumPy. Practice with mathematical computations and array manipulations.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 5: Pandas for Data</h4>
+                <p>DataFrames, data cleaning, merging, grouping. Work with real datasets from Kaggle or government open data.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 6: Data Visualization</h4>
+                <p>Matplotlib and Seaborn for plotting. Create various chart types and learn to tell stories with data visualization.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 7-8: Mathematics Review</h4>
+                <p>Linear algebra, calculus basics, statistics. Focus on concepts most relevant to machine learning applications.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Development Environment -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-desktop"></i> Setting Up Your Development Environment</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-download"></i> Python Installation</h4>
+                <p><strong>Options:</strong> Python.org official installer, Anaconda distribution<br>
+                <strong>Recommendation:</strong> Anaconda for beginners (includes many libraries)<br>
+                <strong>Version:</strong> Python 3.8+ for compatibility</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-code"></i> Code Editors & IDEs</h4>
+                <p><strong>Beginners:</strong> PyCharm Community, Thonny<br>
+                <strong>Advanced:</strong> VSCode, Sublime Text, Vim<br>
+                <strong>Data Science:</strong> Jupyter Notebooks, JupyterLab</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-box"></i> Package Management</h4>
+                <p><strong>pip:</strong> Default Python package manager<br>
+                <strong>conda:</strong> Package and environment manager<br>
+                <strong>Best Practice:</strong> Use virtual environments for projects</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-git-alt"></i> Version Control</h4>
+                <p><strong>Git:</strong> Learn basic commands (add, commit, push, pull)<br>
+                <strong>GitHub:</strong> Create account and learn to use repositories<br>
+                <strong>Why Important:</strong> Track changes and collaborate on projects</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-cloud"></i> Cloud Platforms</h4>
+                <p><strong>Google Colab:</strong> Free Jupyter notebooks with GPU access<br>
+                <strong>Kaggle Kernels:</strong> Free compute with datasets<br>
+                <strong>AWS/GCP:</strong> Professional cloud platforms (advanced)</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-terminal"></i> Command Line Basics</h4>
+                <p><strong>Essential Commands:</strong> cd, ls, pwd, mkdir, pip install<br>
+                <strong>Why Important:</strong> Package installation, environment management<br>
+                <strong>Practice:</strong> Navigate files and run Python scripts</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Practice Projects -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-hammer"></i> Foundation Practice Projects</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-calculator"></i> Calculator with Functions</h4>
+                <p>Build a calculator that handles basic operations, functions, and error handling. Great for practicing Python basics and user input.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-list"></i> To-Do List Application</h4>
+                <p>Create a command-line to-do app with file storage. Practice lists, dictionaries, file I/O, and program structure.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-globe"></i> Web Scraper</h4>
+                <p>Scrape data from websites using requests and BeautifulSoup. Learn to handle HTML, APIs, and data extraction.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-bar"></i> Data Analysis Project</h4>
+                <p>Analyze a real dataset using pandas and matplotlib. Practice data cleaning, exploration, and visualization.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-database"></i> CSV Data Processor</h4>
+                <p>Build a program to read, process, and analyze CSV files. Essential practice for data manipulation skills.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-gamepad"></i> Simple Games</h4>
+                <p>Create games like Tic-Tac-Toe, Hangman, or Number Guessing. Fun way to practice logic and programming concepts.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mistakes-section">
+        <h3 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Foundation Mistakes</h3>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Rushing Through Python Basics</h4>
+                <p>Don't skip fundamental concepts like loops, functions, and data structures. These form the foundation for everything in AI.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Avoiding Mathematics</h4>
+                <p>Many beginners skip math thinking they can learn AI without it. While you can start, mathematical understanding is crucial for advanced topics.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Practicing Enough</h4>
+                <p>Watching videos isn't enough. You must write code regularly and build projects to develop programming intuition.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Jumping to Advanced Topics</h4>
+                <p>Don't rush to machine learning without solid Python and math foundations. It will make advanced concepts much harder to understand.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Learning Data Manipulation</h4>
+                <p>Skipping NumPy and Pandas is a mistake. 80% of AI work involves data preprocessing, and these libraries are essential.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Poor Development Practices</h4>
+                <p>Not using version control, proper code organization, or virtual environments early creates bad habits that are hard to break.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Learning in Isolation</h4>
+                <p>Not joining communities, asking questions, or getting feedback on code. Learning to code is much easier with support and guidance.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Building Projects</h4>
+                <p>Only doing tutorials without building original projects. Real learning happens when you solve problems independently.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Inconsistent Learning</h4>
+                <p>Studying intensively for a few days then stopping for weeks. Consistent daily practice is much more effective for skill development.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Understanding Error Messages</h4>
+                <p>Getting frustrated with errors instead of learning to read and understand them. Debugging skills are crucial for programming success.</p>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<!-- Step 2 Content -->
+<div class="tab-content" id="step2">
+    <h2 class="section-title"><i class="fas fa-brain"></i> Step 2: Machine Learning Basics</h2>
+    
+    <div class="content-grid">
+        <div class="video-section">
+            <h3 class="section-title"><i class="fas fa-play-circle"></i> Recommended Videos</h3>
+            
+            <div class="video-container">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/GwIo3gDZCVQ" title="Machine Learning Basics" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-list">
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/PPLop4L2eGk/hqdefault.jpg" alt="Andrew Ng ML" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Machine Learning Course for Beginners</div>
+                        <div class="video-duration">11:52:23 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg" alt="Scikit-learn Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Python Machine Learning Tutorial (Data Science)</div>
+                        <div class="video-duration">1:31:30 • Programming with Mosh</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/ukzFI9rgwfU/hqdefault.jpg" alt="ML Mathematics" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Mathematics for Machine Learning</div>
+                        <div class="video-duration">6:52:22 • My Lesson</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/gmvvaobm7eQ/hqdefault.jpg" alt="Linear Regression" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">StatQuest: Linear Regression, Clearly Explained!!!</div>
+                        <div class="video-duration">27:26 • StatQuest with Josh Starmer</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/yIYKR4sgzI8/hqdefault.jpg" alt="Logistic Regression" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">StatQuest: Logistic Regression</div>
+                        <div class="video-duration">8:47 • StatQuest with Josh Starmer</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/4HXDjREOHmk/hqdefault.jpg" alt="Random Forest" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Random Forests Part 1 - Building, Using and Evaluating</div>
+                        <div class="video-duration">9:54 • StatQuest with Josh Starmer</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/EuBBz3bI-aA/hqdefault.jpg" alt="SVM" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Support Vector Machines Part 1: The Math</div>
+                        <div class="video-duration">15:52 • StatQuest with Josh Starmer</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/TtKF996oEl8/hqdefault.jpg" alt="Cross Validation" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">StatQuest: Cross validation</div>
+                        <div class="video-duration">6:04 • StatQuest with Josh Starmer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="resources-section">
+            <h3 class="section-title"><i class="fas fa-book-open"></i> Machine Learning Resources</h3>
+            
+            <div class="resources-grid">
+                <!-- Andrew Ng's ML Course -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-graduation-cap"></i> Andrew Ng's ML Course</h4>
+                    <p>The classic introduction to machine learning on Coursera with practical assignments</p>
+                    <a href="https://www.coursera.org/learn/machine-learning" class="resource-link">View Course <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Scikit-learn Documentation -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-book"></i> Scikit-learn Documentation</h4>
+                    <p>Excellent tutorials and examples for ML implementation with hands-on examples</p>
+                    <a href="https://scikit-learn.org/stable/tutorial/index.html" class="resource-link">Read Docs <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Google's ML Crash Course -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-laptop-code"></i> Google's ML Crash Course</h4>
+                    <p>Practical introduction to machine learning with TensorFlow and real examples</p>
+                    <a href="https://developers.google.com/machine-learning/crash-course" class="resource-link">Start Course <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Kaggle Micro-courses -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-project-diagram"></i> Kaggle Learn</h4>
+                    <p>Free micro-courses on ML topics with hands-on coding exercises</p>
+                    <a href="https://www.kaggle.com/learn" class="resource-link">Explore Courses <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Hands-On ML Book -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-book-open"></i> Hands-On Machine Learning</h4>
+                    <p>Practical book by Aurélien Géron with code examples and projects</p>
+                    <a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" class="resource-link">Read Book <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Elements of Statistical Learning -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-chart-bar"></i> Elements of Statistical Learning</h4>
+                    <p>Classic textbook for mathematical foundations of machine learning (free PDF)</p>
+                    <a href="https://web.stanford.edu/~hastie/ElemStatLearn/" class="resource-link">Download PDF <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ML Algorithm Categories -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-sitemap"></i> Machine Learning Algorithm Categories</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-tag"></i> Supervised Learning</h4>
+                <p>Learn from labeled data to make predictions. Includes classification (predicting categories) and regression (predicting continuous values).</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-search"></i> Unsupervised Learning</h4>
+                <p>Find hidden patterns in data without labels. Includes clustering, dimensionality reduction, and association rules.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-gamepad"></i> Reinforcement Learning</h4>
+                <p>Learn through interaction with environment using rewards and penalties. Used in game AI, robotics, and optimization.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-users"></i> Semi-Supervised Learning</h4>
+                <p>Combines small amounts of labeled data with large amounts of unlabeled data for better performance.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-stream"></i> Online Learning</h4>
+                <p>Algorithms that can learn incrementally as new data arrives, adapting to changing patterns over time.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-layer-group"></i> Ensemble Methods</h4>
+                <p>Combine multiple models to create stronger predictions. Includes bagging, boosting, and stacking techniques.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Essential Algorithms -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-cogs"></i> Essential ML Algorithms to Master</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-line"></i> Linear Regression</h4>
+                <p><strong>Use case:</strong> Predicting continuous values (house prices, sales).<br>
+                <strong>Pros:</strong> Simple, interpretable, fast.<br>
+                <strong>Cons:</strong> Assumes linear relationships.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-divide"></i> Logistic Regression</h4>
+                <p><strong>Use case:</strong> Binary classification (spam detection, medical diagnosis).<br>
+                <strong>Pros:</strong> Probabilistic output, interpretable.<br>
+                <strong>Cons:</strong> Assumes linear decision boundary.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-tree"></i> Decision Trees</h4>
+                <p><strong>Use case:</strong> Classification and regression with interpretable rules.<br>
+                <strong>Pros:</strong> Easy to understand and visualize.<br>
+                <strong>Cons:</strong> Prone to overfitting.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-forest"></i> Random Forest</h4>
+                <p><strong>Use case:</strong> Robust classification and regression.<br>
+                <strong>Pros:</strong> Handles overfitting well, feature importance.<br>
+                <strong>Cons:</strong> Less interpretable than single trees.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-vector-square"></i> Support Vector Machines</h4>
+                <p><strong>Use case:</strong> Classification with complex decision boundaries.<br>
+                <strong>Pros:</strong> Works well with high dimensions.<br>
+                <strong>Cons:</strong> Slow on large datasets.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-users-cog"></i> K-Means Clustering</h4>
+                <p><strong>Use case:</strong> Customer segmentation, data exploration.<br>
+                <strong>Pros:</strong> Simple, fast, scalable.<br>
+                <strong>Cons:</strong> Need to choose number of clusters.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ML Pipeline -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-project-diagram"></i> Machine Learning Pipeline</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-download"></i> 1. Data Collection</h4>
+                <p>Gather relevant, quality data from various sources. Consider data privacy, ethics, and representative sampling.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-broom"></i> 2. Data Preprocessing</h4>
+                <p>Clean data, handle missing values, remove outliers, and transform features. Often 80% of the work!</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-bar"></i> 3. Exploratory Data Analysis</h4>
+                <p>Visualize data, understand distributions, find correlations, and generate insights before modeling.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-tools"></i> 4. Feature Engineering</h4>
+                <p>Create new features, select important ones, and transform variables to improve model performance.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-robot"></i> 5. Model Selection & Training</h4>
+                <p>Choose appropriate algorithms, tune hyperparameters, and train models using proper validation techniques.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-check-circle"></i> 6. Evaluation & Deployment</h4>
+                <p>Assess model performance using appropriate metrics, deploy to production, and monitor performance.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Model Evaluation -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-chart-pie"></i> Model Evaluation Metrics</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-bullseye"></i> Classification Metrics</h4>
+                <p><strong>Accuracy:</strong> Overall correctness<br>
+                <strong>Precision:</strong> Of predicted positives, how many are correct?<br>
+                <strong>Recall:</strong> Of actual positives, how many did we catch?<br>
+                <strong>F1-Score:</strong> Harmonic mean of precision and recall</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-ruler"></i> Regression Metrics</h4>
+                <p><strong>MAE:</strong> Mean Absolute Error (easy to interpret)<br>
+                <strong>MSE:</strong> Mean Squared Error (penalizes large errors)<br>
+                <strong>RMSE:</strong> Root MSE (same units as target)<br>
+                <strong>R²:</strong> Coefficient of determination (0-1 scale)</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-balance-scale"></i> Cross-Validation</h4>
+                <p><strong>K-Fold:</strong> Split data into k parts, train on k-1, test on 1<br>
+                <strong>Stratified:</strong> Maintains class distribution in each fold<br>
+                <strong>Time Series:</strong> Respects temporal order in data</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-area"></i> ROC & AUC</h4>
+                <p><strong>ROC Curve:</strong> True Positive Rate vs False Positive Rate<br>
+                <strong>AUC:</strong> Area Under Curve (0.5 = random, 1.0 = perfect)<br>
+                Good for binary classification evaluation</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-table"></i> Confusion Matrix</h4>
+                <p>Visual representation of classification results showing:<br>
+                <strong>TP:</strong> True Positives, <strong>TN:</strong> True Negatives<br>
+                <strong>FP:</strong> False Positives, <strong>FN:</strong> False Negatives</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-exclamation-triangle"></i> Bias-Variance Tradeoff</h4>
+                <p><strong>High Bias:</strong> Underfitting (too simple)<br>
+                <strong>High Variance:</strong> Overfitting (too complex)<br>
+                Goal: Find the sweet spot between both</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Feature Engineering -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-wrench"></i> Feature Engineering Techniques</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-arrows-alt-h"></i> Scaling & Normalization</h4>
+                <p><strong>StandardScaler:</strong> Mean=0, Std=1<br>
+                <strong>MinMaxScaler:</strong> Scale to 0-1 range<br>
+                <strong>RobustScaler:</strong> Uses median, less sensitive to outliers</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-tags"></i> Encoding Categorical Variables</h4>
+                <p><strong>One-Hot:</strong> Binary columns for each category<br>
+                <strong>Label:</strong> Assign numbers to categories<br>
+                <strong>Target:</strong> Use target variable statistics</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-question-circle"></i> Handling Missing Data</h4>
+                <p><strong>Drop:</strong> Remove rows/columns with missing values<br>
+                <strong>Impute:</strong> Fill with mean, median, or mode<br>
+                <strong>Advanced:</strong> Use KNN or model-based imputation</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-seedling"></i> Feature Creation</h4>
+                <p><strong>Polynomial:</strong> x², x³, x₁×x₂ interactions<br>
+                <strong>Binning:</strong> Convert continuous to categorical<br>
+                <strong>Domain-specific:</strong> Create features based on knowledge</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-filter"></i> Feature Selection</h4>
+                <p><strong>Univariate:</strong> Statistical tests (chi-square, ANOVA)<br>
+                <strong>Recursive:</strong> Eliminate features iteratively<br>
+                <strong>L1 Regularization:</strong> Let model select features</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-compress-arrows-alt"></i> Dimensionality Reduction</h4>
+                <p><strong>PCA:</strong> Principal Component Analysis<br>
+                <strong>t-SNE:</strong> For visualization<br>
+                <strong>LDA:</strong> Linear Discriminant Analysis for classification</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mistakes-section">
+        <h3 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Machine Learning Mistakes</h3>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Understanding the Problem</h4>
+                <p>Jumping into modeling without understanding the business problem, data context, or success criteria. Always start with problem definition.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Poor Data Quality Control</h4>
+                <p>Skipping data exploration and cleaning. Garbage in, garbage out. Always visualize and understand your data first.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Data Leakage</h4>
+                <p>Including future information in training data, or features that won't be available at prediction time. This leads to unrealistic performance.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Overfitting to Training Data</h4>
+                <p>Creating models that memorize training data but fail on new data. Use proper validation, regularization, and simpler models.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Wrong Evaluation Metrics</h4>
+                <p>Using inappropriate metrics for the problem (accuracy for imbalanced datasets, RMSE when MAE is more interpretable, etc.).</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Ignoring Class Imbalance</h4>
+                <p>Not handling imbalanced datasets properly. Use appropriate sampling, metrics, and algorithm-specific techniques.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Feature Scaling Mistakes</h4>
+                <p>Forgetting to scale features for distance-based algorithms, or scaling after splitting data (causing data leakage).</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Understanding Algorithm Assumptions</h4>
+                <p>Using algorithms without understanding their assumptions (linear separability for SVM, normality for naive Bayes, etc.).</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Hyperparameter Tuning on Test Set</h4>
+                <p>Optimizing hyperparameters using the test set, which leads to overly optimistic performance estimates. Use validation sets.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Correlation vs Causation</h4>
+                <p>Assuming that correlation implies causation. ML finds patterns, not causal relationships. Be careful with interpretations.</p>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<!-- Step 3 Content -->
+<div class="tab-content" id="step3">
+    <h2 class="section-title"><i class="fas fa-project-diagram"></i> Step 3: Deep Learning</h2>
+    
+    <div class="content-grid">
+        <div class="video-section">
+            <h3 class="section-title"><i class="fas fa-play-circle"></i> Recommended Videos</h3>
+            
+            <div class="video-container">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/aircAruvnKk" title="Deep Learning Basics" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-list">
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg" alt="Neural Networks Explained" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">But what is a neural network?</div>
+                        <div class="video-duration">19:13 • 3Blue1Brown</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/IHZwWFHWa-w/hqdefault.jpg" alt="Deep Learning Course" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Deep Learning Course for Beginners</div>
+                        <div class="video-duration">4:23:52 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/VyWAvY2CF9c/hqdefault.jpg" alt="TensorFlow Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">TensorFlow 2.0 Complete Course - Python Neural Networks</div>
+                        <div class="video-duration">6:52:26 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/GIsg-ZUy0MY/hqdefault.jpg" alt="PyTorch Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">PyTorch for Deep Learning - Full Course</div>
+                        <div class="video-duration">25:36:01 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/tPYj3fFJGjk/hqdefault.jpg" alt="CNN Explained" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Convolutional Neural Networks Explained</div>
+                        <div class="video-duration">15:20 • DeepLearningAI</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/8HyCNIVRbSU/hqdefault.jpg" alt="RNN Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Recurrent Neural Networks (RNN) and LSTM</div>
+                        <div class="video-duration">18:47 • StatQuest</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/kCc8FmEb1nY/hqdefault.jpg" alt="Transformers Explained" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Attention is All You Need (Transformer) - Model Explanation</div>
+                        <div class="video-duration">21:53 • Yannic Kilcher</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/JcI5Vnw0b2c/hqdefault.jpg" alt="Backpropagation" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Backpropagation calculus | Chapter 4, Deep learning</div>
+                        <div class="video-duration">13:54 • 3Blue1Brown</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="resources-section">
+            <h3 class="section-title"><i class="fas fa-book-open"></i> Deep Learning Resources</h3>
+            
+            <div class="resources-grid">
+                <!-- Andrew Ng's Deep Learning Specialization -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-graduation-cap"></i> Deep Learning Specialization</h4>
+                    <p>Comprehensive deep learning course by Andrew Ng on Coursera with hands-on projects</p>
+                    <a href="https://www.coursera.org/specializations/deep-learning" class="resource-link">View Course <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Deep Learning Book -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-book"></i> Deep Learning Book</h4>
+                    <p>"Deep Learning" by Ian Goodfellow, Yoshua Bengio, and Aaron Courville - The Bible of Deep Learning</p>
+                    <a href="https://www.deeplearningbook.org/" class="resource-link">Read Book <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- TensorFlow -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-laptop-code"></i> TensorFlow Tutorials</h4>
+                    <p>Official TensorFlow tutorials with interactive examples and best practices</p>
+                    <a href="https://www.tensorflow.org/tutorials" class="resource-link">Explore Tutorials <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- PyTorch -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-fire"></i> PyTorch Documentation</h4>
+                    <p>Comprehensive guide to PyTorch with tutorials from beginner to advanced</p>
+                    <a href="https://pytorch.org/tutorials/" class="resource-link">Learn PyTorch <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Fast.ai -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-rocket"></i> Fast.ai Course</h4>
+                    <p>Practical deep learning for coders with top-down approach</p>
+                    <a href="https://course.fast.ai/" class="resource-link">Start Course <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Papers With Code -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-file-alt"></i> Papers With Code</h4>
+                    <p>Latest research papers with implementation code</p>
+                    <a href="https://paperswithcode.com/" class="resource-link">Browse Papers <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Neural Network Architectures -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-brain"></i> Key Neural Network Architectures</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-layer-group"></i> Feedforward Neural Networks</h4>
+                <p>Basic multilayer perceptrons (MLPs) for classification and regression. Great starting point for understanding backpropagation and gradient descent.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-image"></i> Convolutional Neural Networks</h4>
+                <p>Specialized for image processing. Learn about convolution, pooling, and feature maps. Essential for computer vision tasks.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-exchange-alt"></i> Recurrent Neural Networks</h4>
+                <p>Handle sequential data like text and time series. Master LSTMs and GRUs for memory and long-term dependencies.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-eye"></i> Attention Mechanisms</h4>
+                <p>Focus on relevant parts of input. Foundation for Transformers and modern NLP models like BERT and GPT.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-robot"></i> Generative Adversarial Networks</h4>
+                <p>Two networks competing to generate realistic data. Learn about generators, discriminators, and training dynamics.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-compress"></i> Autoencoders</h4>
+                <p>Learn efficient data representations. Useful for dimensionality reduction, denoising, and anomaly detection.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Framework Comparison -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-tools"></i> Deep Learning Frameworks</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-google"></i> TensorFlow/Keras</h4>
+                <p><strong>Pros:</strong> Industry standard, great for production, extensive ecosystem, TensorBoard visualization.<br>
+                <strong>Best for:</strong> Production deployment, large-scale projects, beginners (Keras API).</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-fire"></i> PyTorch</h4>
+                <p><strong>Pros:</strong> Dynamic computation graph, pythonic, great for research, excellent debugging.<br>
+                <strong>Best for:</strong> Research, experimentation, custom architectures, academic projects.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-bolt"></i> PyTorch Lightning</h4>
+                <p><strong>Pros:</strong> High-level PyTorch wrapper, reduces boilerplate, organized code structure.<br>
+                <strong>Best for:</strong> Clean PyTorch code, reproducible experiments, team collaboration.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-cube"></i> JAX</h4>
+                <p><strong>Pros:</strong> NumPy-compatible, automatic differentiation, JIT compilation, functional programming.<br>
+                <strong>Best for:</strong> High-performance computing, research, scientific computing.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-rocket"></i> Fast.ai</h4>
+                <p><strong>Pros:</strong> High-level API, transfer learning, best practices built-in, beginner-friendly.<br>
+                <strong>Best for:</strong> Rapid prototyping, practical applications, beginners, quick results.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-face-smile"></i> Hugging Face</h4>
+                <p><strong>Pros:</strong> Pre-trained models, transformers library, model hub, easy deployment.<br>
+                <strong>Best for:</strong> NLP tasks, transfer learning, state-of-the-art models, quick deployment.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Learning Path -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-route"></i> Deep Learning Learning Path</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 1-2: Foundations</h4>
+                <p>Understand perceptrons, activation functions, forward pass, and basic gradient descent. Implement a simple neural network from scratch.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 3-4: Backpropagation</h4>
+                <p>Master the chain rule, implement backpropagation manually, understand weight updates and optimization algorithms (SGD, Adam).</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 5-6: Framework Basics</h4>
+                <p>Choose TensorFlow/Keras or PyTorch. Build your first models using the framework. Learn about layers, models, and training loops.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 7-8: CNNs</h4>
+                <p>Learn convolution, pooling, CNN architectures (LeNet, AlexNet, VGG). Build image classifiers and understand transfer learning.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 9-10: RNNs</h4>
+                <p>Understand sequence modeling, vanilla RNNs, LSTMs, GRUs. Build text classifiers and simple language models.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-play"></i> Week 11-12: Advanced Topics</h4>
+                <p>Explore attention mechanisms, Transformers, GANs, or autoencoders based on your interests. Start working on projects.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Best Practices -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-star"></i> Deep Learning Best Practices</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-database"></i> Data Preparation</h4>
+                <p>Normalize inputs, handle missing values, augment data for better generalization. Quality data is more important than complex models.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-line"></i> Start Simple</h4>
+                <p>Begin with simple architectures and gradually increase complexity. Ensure your simple model works before adding complexity.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-shield-alt"></i> Regularization</h4>
+                <p>Use dropout, batch normalization, L1/L2 regularization to prevent overfitting. Monitor validation metrics closely.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-tachometer-alt"></i> Monitor Training</h4>
+                <p>Use learning curves, loss plots, and metrics to understand model behavior. Early stopping prevents overfitting.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-recycle"></i> Transfer Learning</h4>
+                <p>Use pre-trained models when possible. Fine-tuning saves time and often gives better results than training from scratch.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-code"></i> Reproducible Code</h4>
+                <p>Set random seeds, version control your code, document experiments, and save model checkpoints regularly.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Common Architectures Deep Dive -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-microscope"></i> Popular CNN Architectures</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-layer-group"></i> ResNet</h4>
+                <p>Residual connections solve vanishing gradient problem. Learn about skip connections and why deeper networks can perform better.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-expand-arrows-alt"></i> Inception</h4>
+                <p>Multi-scale feature extraction with parallel convolutions. Efficient architecture with fewer parameters than VGG.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-mobile-alt"></i> MobileNet</h4>
+                <p>Lightweight architecture for mobile devices. Learn about depthwise separable convolutions and efficiency trade-offs.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-eye"></i> EfficientNet</h4>
+                <p>Systematic scaling of network depth, width, and resolution. State-of-the-art accuracy with fewer parameters.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-puzzle-piece"></i> U-Net</h4>
+                <p>Encoder-decoder architecture for semantic segmentation. Essential for medical imaging and pixel-level predictions.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-search"></i> YOLO</h4>
+                <p>Real-time object detection with single forward pass. Learn about bounding box regression and non-max suppression.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mistakes-section">
+        <h3 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Deep Learning Mistakes</h3>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Starting with Complex Architectures</h4>
+                <p>Beginners often jump to complex models like Transformers without understanding basic feedforward networks. Start simple and build up gradually.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Ignoring Data Quality</h4>
+                <p>Spending too much time on model architecture while ignoring data preprocessing, cleaning, and augmentation. Clean data beats fancy models.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Understanding Backpropagation</h4>
+                <p>Using frameworks without understanding how gradients flow. This makes debugging and optimization very difficult.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Overfitting from Day One</h4>
+                <p>Not using validation sets properly, not applying regularization, and chasing high training accuracy instead of generalization.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Inappropriate Learning Rates</h4>
+                <p>Using default learning rates without tuning. Learning rate is often the most important hyperparameter to get right.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Monitoring Training</h4>
+                <p>Not plotting learning curves, not checking for gradient explosions/vanishing, and not using proper evaluation metrics for the task.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Ignoring Computational Constraints</h4>
+                <p>Building models too large for available hardware, not considering inference time, and not understanding memory requirements.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Framework Dependency</h4>
+                <p>Relying too heavily on high-level APIs without understanding the underlying mathematics and concepts. Learn the fundamentals first.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Step 4 Content -->
+<div class="tab-content" id="step4">
+    <h2 class="section-title"><i class="fas fa-star"></i> Step 4: Specialize</h2>
+    
+    <div class="content-grid">
+        <div class="video-section">
+            <h3 class="section-title"><i class="fas fa-play-circle"></i> Recommended Videos</h3>
+            
+            <div class="video-container">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/jGwO_UgTS7I" title="Computer Vision Basics" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-list">
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/jGwO_UgTS7I/hqdefault.jpg" alt="Computer Vision Course" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Computer Vision Course - Python Tutorial</div>
+                        <div class="video-duration">6:14:51 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/X2vAabgKiuM/hqdefault.jpg" alt="NLP Course" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Natural Language Processing with Python</div>
+                        <div class="video-duration">12:18:39 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/vmEHCJofslg/hqdefault.jpg" alt="Reinforcement Learning" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Reinforcement Learning Course - Full Machine Learning Tutorial</div>
+                        <div class="video-duration">4:17:41 • freeCodeCamp</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/2eCHD6f_phE/hqdefault.jpg" alt="Time Series Analysis" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Time Series Analysis Tutorial</div>
+                        <div class="video-duration">3:45:22 • StatQuest</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="resources-section">
+            <h3 class="section-title"><i class="fas fa-book-open"></i> Specialization Resources</h3>
+            
+            <div class="resources-grid">
+                <!-- Computer Vision -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-eye"></i> Computer Vision</h4>
+                    <p>OpenCV tutorials and Stanford CS231n course materials</p>
+                    <a href="https://opencv-python-tutroals.readthedocs.io/" class="resource-link">OpenCV Docs <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Natural Language Processing -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-comments"></i> Natural Language Processing</h4>
+                    <p>NLTK, spaCy documentation and Hugging Face tutorials</p>
+                    <a href="https://huggingface.co/course/chapter1/1" class="resource-link">HF Course <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Reinforcement Learning -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-gamepad"></i> Reinforcement Learning</h4>
+                    <p>OpenAI Gym and Stable Baselines3 for RL implementation</p>
+                    <a href="https://stable-baselines3.readthedocs.io/" class="resource-link">SB3 Docs <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Time Series -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-chart-line"></i> Time Series Analysis</h4>
+                    <p>Prophet, ARIMA, and LSTM for time series forecasting</p>
+                    <a href="https://facebook.github.io/prophet/" class="resource-link">Prophet Docs <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Robotics -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-robot"></i> AI in Robotics</h4>
+                    <p>ROS (Robot Operating System) and robotics simulation</p>
+                    <a href="http://wiki.ros.org/ROS/Tutorials" class="resource-link">ROS Tutorials <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Generative AI -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-magic"></i> Generative AI</h4>
+                    <p>GANs, Diffusion Models, and Large Language Models</p>
+                    <a href="https://huggingface.co/docs/diffusers/index" class="resource-link">Diffusers <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Specialization Areas -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-compass"></i> Choose Your Specialization Path</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-eye"></i> Computer Vision</h4>
+                <p>Image recognition, object detection, medical imaging, autonomous vehicles, and augmented reality applications.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-comments"></i> Natural Language Processing</h4>
+                <p>Chatbots, language translation, sentiment analysis, text summarization, and search engines.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-gamepad"></i> Reinforcement Learning</h4>
+                <p>Game AI, robotics control, financial trading, recommendation systems, and autonomous systems.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-line"></i> Time Series & Forecasting</h4>
+                <p>Stock market prediction, demand forecasting, IoT sensor data analysis, and business intelligence.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-robot"></i> AI in Robotics</h4>
+                <p>Industrial automation, service robots, drones, and human-robot interaction systems.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-magic"></i> Generative AI</h4>
+                <p>Content creation, art generation, code generation, synthetic data, and creative applications.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Career Paths -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-briefcase"></i> Career Paths & Roles</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-user-tie"></i> Machine Learning Engineer</h4>
+                <p>Deploy and maintain ML models in production environments. Focus on MLOps, scalability, and system design.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-bar"></i> Data Scientist</h4>
+                <p>Extract insights from data, build predictive models, and communicate findings to stakeholders.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-microscope"></i> Research Scientist</h4>
+                <p>Develop new AI algorithms, publish research papers, and work on cutting-edge AI technologies.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-brain"></i> AI Product Manager</h4>
+                <p>Define AI product strategy, work with engineering teams, and bridge technical and business needs.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-shield-alt"></i> AI Ethics Specialist</h4>
+                <p>Ensure responsible AI development, address bias issues, and create ethical AI guidelines.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-cogs"></i> AI Solutions Architect</h4>
+                <p>Design end-to-end AI systems, integrate multiple AI technologies, and solve complex business problems.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mistakes-section">
+        <h3 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Specialization Mistakes</h3>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Trying to Learn Everything</h4>
+                <p>Don't spread yourself too thin. Pick 1-2 specializations and go deep rather than surface-level knowledge in many areas.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Ignoring Domain Knowledge</h4>
+                <p>Understanding the business domain (healthcare, finance, etc.) is as important as technical AI skills.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Building a Portfolio</h4>
+                <p>Create projects that showcase your specialization. Employers want to see practical applications of your skills.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Following Trends Blindly</h4>
+                <p>Choose specializations based on your interests and career goals, not just what's currently trending.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Neglecting Soft Skills</h4>
+                <p>Communication, teamwork, and problem-solving skills are crucial for success in any AI specialization.</p>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<!-- Step 5 Content -->
+<div class="tab-content" id="step5">
+    <h2 class="section-title"><i class="fas fa-rocket"></i> Step 5: Build Projects</h2>
+    
+    <div class="content-grid">
+        <div class="video-section">
+            <h3 class="section-title"><i class="fas fa-play-circle"></i> Project Tutorial Videos</h3>
+            
+            <div class="video-container">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/MJ1vWb1rGwM" title="Machine Learning Projects" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-list">
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/MJ1vWb1rGwM/hqdefault.jpg" alt="ML Projects Tutorial" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">5 Machine Learning Projects Every Beginner Should Build</div>
+                        <div class="video-duration">1:05:32 • Python Engineer</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/fiz1ORTBGpY/hqdefault.jpg" alt="End-to-End ML Project" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">End-to-End Machine Learning Project Tutorial</div>
+                        <div class="video-duration">2:45:17 • Krish Naik</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/xl0N7tHiwlw/hqdefault.jpg" alt="Portfolio Projects" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Data Science Portfolio Projects That Will Get You Hired</div>
+                        <div class="video-duration">18:47 • Ken Jee</div>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <img src="https://i.ytimg.com/vi/ZVaHhZZOGyg/hqdefault.jpg" alt="Deploy ML Model" class="video-thumb">
+                    <div class="video-info">
+                        <div class="video-title">Deploy Machine Learning Model to Production</div>
+                        <div class="video-duration">1:32:15 • freeCodeCamp</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="resources-section">
+            <h3 class="section-title"><i class="fas fa-book-open"></i> Project Resources & Platforms</h3>
+            
+            <div class="resources-grid">
+                <!-- GitHub -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fab fa-github"></i> GitHub</h4>
+                    <p>Host your code, collaborate with others, and showcase your projects</p>
+                    <a href="https://github.com/" class="resource-link">Visit GitHub <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Kaggle -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-trophy"></i> Kaggle</h4>
+                    <p>Participate in competitions and explore datasets for projects</p>
+                    <a href="https://www.kaggle.com/" class="resource-link">Explore Kaggle <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Google Colab -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-cloud"></i> Google Colab</h4>
+                    <p>Free cloud-based Jupyter notebooks with GPU support</p>
+                    <a href="https://colab.research.google.com/" class="resource-link">Open Colab <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Streamlit -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-desktop"></i> Streamlit</h4>
+                    <p>Create web apps for your ML models with Python</p>
+                    <a href="https://streamlit.io/" class="resource-link">Try Streamlit <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Heroku -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-server"></i> Heroku</h4>
+                    <p>Deploy your ML applications to the cloud for free</p>
+                    <a href="https://www.heroku.com/" class="resource-link">Deploy on Heroku <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <!-- Weights & Biases -->
+                <div class="resource-card">
+                    <h4 class="resource-title"><i class="fas fa-chart-area"></i> Weights & Biases</h4>
+                    <p>Track experiments, visualize results, and manage ML projects</p>
+                    <a href="https://wandb.ai/" class="resource-link">Try W&B <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Project Categories -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-list"></i> Beginner Project Ideas</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-home"></i> House Price Prediction</h4>
+                <p>Use regression to predict house prices based on features like size, location, and amenities. Great for learning data preprocessing and evaluation metrics.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-envelope"></i> Email Spam Detection</h4>
+                <p>Build a text classifier to detect spam emails using natural language processing techniques and machine learning algorithms.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-heart"></i> Movie Recommendation System</h4>
+                <p>Create a system that recommends movies based on user preferences using collaborative filtering or content-based approaches.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-car"></i> Car Price Prediction</h4>
+                <p>Predict used car prices using features like brand, model, year, mileage, and condition. Practice feature engineering and model selection.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-line"></i> Stock Price Analysis</h4>
+                <p>Analyze historical stock data, create visualizations, and build simple prediction models using time series analysis techniques.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-user-injured"></i> Medical Cost Prediction</h4>
+                <p>Predict individual medical costs based on factors like age, BMI, smoking status, and region. Learn about healthcare data analysis.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Intermediate Projects -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-star-half-alt"></i> Intermediate Project Ideas</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-camera"></i> Image Classification</h4>
+                <p>Build a CNN to classify images (cats vs dogs, handwritten digits, etc.). Learn about computer vision and deep learning frameworks.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-comments"></i> Chatbot Development</h4>
+                <p>Create an intelligent chatbot using NLP techniques. Implement intent recognition, entity extraction, and response generation.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-globe"></i> Web Scraping & Analysis</h4>
+                <p>Scrape data from websites, clean it, and perform analysis. Build a complete data pipeline from collection to insights.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-newspaper"></i> News Article Summarization</h4>
+                <p>Use NLP to automatically summarize news articles. Implement both extractive and abstractive summarization techniques.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-smile"></i> Sentiment Analysis Dashboard</h4>
+                <p>Analyze social media sentiment about brands or topics. Create an interactive dashboard with real-time updates.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-route"></i> Route Optimization</h4>
+                <p>Solve the traveling salesman problem or optimize delivery routes using optimization algorithms and geographical data.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Advanced Projects -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-crown"></i> Advanced Project Ideas</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-brain"></i> Deep Learning from Scratch</h4>
+                <p>Implement neural networks without frameworks. Build backpropagation, optimizers, and activation functions from ground up.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-robot"></i> Reinforcement Learning Game AI</h4>
+                <p>Train an RL agent to play games like Snake, Pong, or Chess. Implement Q-learning, policy gradients, or actor-critic methods.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-palette"></i> GAN Art Generator</h4>
+                <p>Create original artwork using Generative Adversarial Networks. Experiment with different architectures and training techniques.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-microchip"></i> Real-time Object Detection</h4>
+                <p>Build a real-time object detection system using YOLO or similar models. Deploy on edge devices or web applications.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-language"></i> Language Translation Model</h4>
+                <p>Build a neural machine translation system using attention mechanisms or transformer architectures for multiple languages.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-cogs"></i> MLOps Pipeline</h4>
+                <p>Create an end-to-end ML pipeline with automated training, testing, deployment, and monitoring using MLOps tools.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Portfolio Tips -->
+    <div class="tips-section">
+        <h3 class="section-title"><i class="fas fa-briefcase"></i> Portfolio Building Tips</h3>
+        
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-code"></i> Clean Code</h4>
+                <p>Write well-documented, readable code with proper structure. Use meaningful variable names and add comments.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-chart-bar"></i> Show Results</h4>
+                <p>Include visualizations, metrics, and clear explanations of your model's performance and business impact.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-file-alt"></i> Document Everything</h4>
+                <p>Create detailed README files explaining the problem, approach, results, and how to reproduce your work.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-globe-americas"></i> Deploy Projects</h4>
+                <p>Make your projects accessible online. Deploy web apps or APIs that others can interact with.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-users"></i> Solve Real Problems</h4>
+                <p>Choose projects that address real-world problems or demonstrate practical applications of your skills.</p>
+            </div>
+            
+            <div class="tip-card">
+                <h4 class="tip-title"><i class="fas fa-layer-group"></i> Show Variety</h4>
+                <p>Include projects from different domains (vision, NLP, time series) to showcase your versatility.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mistakes-section">
+        <h3 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Project Mistakes</h3>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Using Only Toy Datasets</h4>
+                <p>Don't just use Iris or Titanic datasets. Work with messy, real-world data to demonstrate your data cleaning skills.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Focusing Only on Accuracy</h4>
+                <p>Show understanding of different metrics, cross-validation, and the bias-variance tradeoff, not just high accuracy scores.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>No Business Context</h4>
+                <p>Explain the business problem, why it matters, and how your solution provides value beyond just technical metrics.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Poor Presentation</h4>
+                <p>Even great work can look bad with poor documentation, messy code, or unclear visualizations. Presentation matters.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Not Showing Process</h4>
+                <p>Don't just show final results. Document your thought process, failed attempts, and iterations to show problem-solving skills.</p>
+            </div>
+        </div>
+        
+        <div class="mistake-item">
+            <div class="mistake-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="mistake-content">
+                <h4>Copying Tutorials Exactly</h4>
+                <p>Don't just follow tutorials step-by-step. Add your own twist, improvements, or apply techniques to different problems.</p>
+            </div>
+        </div>
+    </div>
+</div>
+        <footer>
+            <p>AI Learning Resources Hub &copy; 2025. All rights reserved.</p>
+            <p>Remember: Consistent learning and practice are the keys to mastering AI!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                // Show the selected tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Video item functionality
+        document.querySelectorAll('.video-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const videoSrc = item.getAttribute('data-video');
+                if (videoSrc) {
+                    const iframe = item.closest('.video-section').querySelector('iframe');
+                    iframe.src = videoSrc;
+                }
+            });
+        });
+        // Create starry background with constellations
+        function createStarryBackground() {
+            const starsContainer = document.getElementById('stars');
+            
+            // Create stars
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                star.style.animation = `twinkle ${Math.random() * 5 + 3}s infinite alternate`;
+                starsContainer.appendChild(star);
+            }
+            
+            // Create constellations
+            for (let i = 0; i < 15; i++) {
+                const constellation = document.createElement('div');
+                constellation.className = 'constellation';
+                
+                const startX = Math.random() * 90 + 5;
+                const startY = Math.random() * 90 + 5;
+                const length = Math.random() * 50 + 20;
+                const angle = Math.random() * 360;
+                
+                constellation.style.left = startX + '%';
+                constellation.style.top = startY + '%';
+                constellation.style.width = length + 'px';
+                constellation.style.transform = `rotate(${angle}deg)`;
+                constellation.style.opacity = Math.random() * 0.3 + 0.1;
+                
+                starsContainer.appendChild(constellation);
+            }
+            
+            // Create occasional shooting stars
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    createShootingStar();
+                }
+            }, 3000);
+        }
+        
+        function createShootingStar() {
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            
+            const startY = Math.random() * 50;
+            shootingStar.style.top = startY + '%';
+            shootingStar.style.left = '0';
+            shootingStar.style.width = '100px';
+            shootingStar.style.opacity = '0';
+            
+            document.body.appendChild(shootingStar);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                if (document.body.contains(shootingStar)) {
+                    document.body.removeChild(shootingStar);
+                }
+            }, 3000);
+        }
+        
+        // Add keyframes for twinkling
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes twinkle {
+                0% { opacity: 0.3; }
+                100% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize the background
+        createStarryBackground();
+        createFloatingParticles();
+        
+        // Create floating particles
+        function createFloatingParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'floating-particles';
+            document.body.appendChild(particlesContainer);
+            
+            // Create particles
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 8 + 3;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                
+                // Random particle colors
+                const colors = [
+                    'rgba(126, 34, 206, 0.3)',
+                    'rgba(30, 64, 175, 0.3)',
+                    'rgba(0, 212, 255, 0.2)',
+                    'rgba(240, 171, 252, 0.2)'
+                ];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Add click event to dropdowns for mobile
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown > .nav-link').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

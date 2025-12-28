@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-49NDTH4G8M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-49NDTH4G8M');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Path - Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #0a0e1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Starry background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e1a 0%, #141a30 100%);
+        }
+        
+        /* Enhanced visual elements */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(126, 34, 206, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        
+        .constellation {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(166,187,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            transform-origin: 0 0;
+        }
+        
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            animation: shoot 3s linear infinite;
+        }
+        
+        @keyframes shoot {
+            0% {
+                transform: translateX(-100px) translateY(0) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            20% {
+                transform: translateX(100vw) translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            position: sticky;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            margin-bottom: 30px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(30px);
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .nav-link:hover {
+            background: rgba(126, 34, 206, 0.4);
+            backdrop-filter: blur(20px);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(126, 34, 206, 0.3);
+        }
+
+        .nav-link.active {
+            background: rgba(126, 34, 206, 0.6);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 0 25px rgba(126, 34, 206, 0.5);
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(15px);
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            margin-top: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 5px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 15px;
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(126, 34, 206, 0.3);
+            transform: translateX(-5px);
+        }
+
+        /* Dropdown Arrow */
+        .dropdown-arrow {
+            margin-left: 5px;
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                flex-direction: column;
+                width: 200px;
+                display: none;
+                margin-top: 10px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                margin-top: 5px;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(30, 64, 175, 0.08);
+            backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 60px rgba(126, 34, 206, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(126, 34, 206, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                conic-gradient(from 0deg, rgba(147, 197, 253, 0.05), rgba(126, 34, 206, 0.05), rgba(147, 197, 253, 0.05));
+            transform: rotate(30deg);
+            z-index: -1;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+        
+        header::after {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: twinkleIcon 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { transform: rotate(30deg) scale(1); }
+            50% { transform: rotate(60deg) scale(1.1); }
+        }
+        
+        @keyframes twinkleIcon {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #f0abfc, #93c5fd, #f0abfc, #60a5fa);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(126, 34, 206, 0.6);
+            filter: drop-shadow(0 0 15px rgba(147, 197, 253, 0.4));
+            animation: gradientFlow 4s ease-in-out infinite;
+            position: relative;
+        }
+        
+        h1::before {
+            content: '🤖';
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.7;
+            animation: robotPulse 2s ease-in-out infinite;
+        }
+        
+        h1::after {
+            content: '🚀';
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.7;
+            animation: rocketFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes robotPulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
+        }
+        
+        @keyframes rocketFloat {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-60%) translateX(10px); }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #cbd5e1;
+        }
+        
+        .learning-path {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .path-step {
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+        
+        .path-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(126, 34, 206, 0.8), rgba(30, 64, 175, 0.8), rgba(126, 34, 206, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .path-step:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(30px) saturate(200%);
+            box-shadow: 
+                0 25px 50px rgba(126, 34, 206, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 60px rgba(126, 34, 206, 0.2);
+            border: 1px solid rgba(126, 34, 206, 0.4);
+        }
+        
+        .path-step:hover::before {
+            opacity: 1;
+        }
+        
+        .step-header {
+            background: linear-gradient(90deg, rgba(126, 34, 206, 0.5) 0%, rgba(30, 64, 175, 0.5) 100%);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            color: #7e22ce;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 
+                0 0 20px rgba(126, 34, 206, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-number::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(126, 34, 206, 0.1), transparent);
+            animation: spin 3s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .step-description {
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .step-button {
+            align-self: flex-start;
+            background: rgba(126, 34, 206, 0.4);
+            backdrop-filter: blur(15px);
+            color: white;
+            border: 1px solid rgba(126, 34, 206, 0.6);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(126, 34, 206, 0.3);
+        }
+        
+        .step-button:hover {
+            background: rgba(126, 34, 206, 0.6);
+            backdrop-filter: blur(20px);
+            gap: 15px;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(126, 34, 206, 0.5);
+            border: 1px solid rgba(126, 34, 206, 0.8);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(25px) saturate(180%);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(30px) saturate(200%);
+            box-shadow: 
+                0 25px 50px rgba(126, 34, 206, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 60px rgba(126, 34, 206, 0.2);
+            border: 1px solid rgba(126, 34, 206, 0.4);
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00d4ff, #7e22ce, #ff6b35, #00d4ff);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: iconGlow 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(126, 34, 206, 0.6));
+            position: relative;
+        }
+        
+        .feature-icon::before {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconGlow {
+            0%, 100% { 
+                background-position: 0% 50%;
+                filter: drop-shadow(0 0 8px rgba(126, 34, 206, 0.6));
+            }
+            25% {
+                filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.6));
+            }
+            50% { 
+                background-position: 100% 50%;
+                filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.6));
+            }
+            75% {
+                filter: drop-shadow(0 0 12px rgba(126, 34, 206, 0.8));
+            }
+        }
+        
+        .feature-title {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #f0abfc, #00d4ff, #7e22ce);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 3s ease-in-out infinite;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .feature-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #7e22ce);
+            transition: width 0.5s ease;
+        }
+        
+        .feature-card:hover .feature-title::after {
+            width: 80%;
+        }
+        
+        .feature-description {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .feature-button {
+            background: rgba(126, 34, 206, 0.5);
+            backdrop-filter: blur(20px) saturate(150%);
+            color: white;
+            border: 2px solid rgba(126, 34, 206, 0.6);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 25px rgba(126, 34, 206, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+        
+        .feature-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-button:hover {
+            background: rgba(126, 34, 206, 0.7);
+            backdrop-filter: blur(25px) saturate(180%);
+            border-color: rgba(126, 34, 206, 0.8);
+            gap: 15px;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(126, 34, 206, 0.5),
+                0 0 40px rgba(126, 34, 206, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-button:hover::before {
+            left: 100%;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(30, 41, 59, 0.25);
+            backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 16px;
+            margin-top: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, #7e22ce, #ff6b35, transparent);
+            background-size: 200% 100%;
+            animation: borderFlow 4s linear infinite;
+        }
+        
+        @keyframes borderFlow {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+        
+        footer p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .step-header i {
+                align-self: flex-end;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="theme.js"></script>
+    <div class="stars" id="stars"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">🏠 Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">
+                        📚 Steps <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="foundations.html" class="dropdown-item">🎯 Step 1: Get Started</a>
+                        <a href="ml-basics.html" class="dropdown-item">🧠 Step 2: Learn Basics</a>
+                        <a href="deep-learning.html" class="dropdown-item">🔥 Step 3: Practice Projects</a>
+                        <a href="specialize.html" class="dropdown-item">🚀 Step 4: Advanced Topics</a>
+                        <a href="projects.html" class="dropdown-item">💼 Step 5: Build Portfolio</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">
+                        🌟 More <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="resources.html" class="dropdown-item">🎓 Free Resources</a>
+                        <a href="community.html" class="dropdown-item">🤝 Community Support</a>
+                        <a href="todoprojects.html" class="dropdown-item">💻 Hands-on Projects</a>
+                    </div>
+                <li class="nav-item">
+                    <a href="https://erenyadav.netlify.app" class="nav-link">ℹ️ About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>AI Learning Path</h1>
+            <p class="subtitle">Your journey to mastering Artificial Intelligence starts here. Follow the path below to become an AI expert.</p>
+        </header>
+        
+        <div class="learning-path">
+            <div class="path-step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h2 class="step-title">Build Foundations</h2>
+                </div>
+                <div class="step-content">
+                    <p class="step-description">Learn Python programming, basic mathematics (linear algebra, calculus, statistics), and data analysis.</p>
+                    <button class="step-button" onclick="location.href='foundations.html'">
+                        Start Learning <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="path-step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h2 class="step-title">Machine Learning Basics</h2>
+                </div>
+                <div class="step-content">
+                    <p class="step-description">Study core ML concepts: supervised/unsupervised learning, model evaluation, and basic algorithms.</p>
+                    <button class="step-button" onclick="location.href='ml-basics.html'">
+                        Start Learning <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="path-step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h2 class="step-title">Deep Learning</h2>
+                </div>
+                <div class="step-content">
+                    <p class="step-description">Explore neural networks, CNNs, RNNs, and transformers using frameworks like TensorFlow and PyTorch.</p>
+                    <button class="step-button" onclick="location.href='deep-learning.html'">
+                        Start Learning <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="path-step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h2 class="step-title">Specialize</h2>
+                </div>
+                <div class="step-content">
+                    <p class="step-description">Choose a specialization: NLP, Computer Vision, Reinforcement Learning, or Generative AI.</p>
+                    <button class="step-button" onclick="location.href='specialize.html'">
+                        Start Learning <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="path-step">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <h2 class="step-title">Build Projects</h2>
+                </div>
+                <div class="step-content">
+                    <p class="step-description">Apply your knowledge to real-world projects and build a portfolio to showcase your skills.</p>
+                    <button class="step-button" onclick="location.href='projects.html'">
+                        Start Learning <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card" onclick="location.href='resources.html'">
+                <div class="feature-icon">
+                    📚
+                </div>
+                <h3 class="feature-title">Free Resources</h3>
+                <p class="feature-description">Access high-quality learning materials from top universities and companies for free.</p>
+                <button class="feature-button">
+                    Explore Resources <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+            
+            <div class="feature-card" onclick="location.href='community.html'">
+                <div class="feature-icon">
+                    👥
+                </div>
+                <h3 class="feature-title">Community Support</h3>
+                <p class="feature-description">Join a community of AI enthusiasts and experts to get help and share knowledge.</p>
+                <button class="feature-button">
+                    Join Community <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+            
+            <div class="feature-card" onclick="location.href='todoprojects.html'">
+                <div class="feature-icon">
+                    💻
+                </div>
+                <h3 class="feature-title">Hands-on Projects</h3>
+                <p class="feature-description">Apply what you learn through practical projects and build your portfolio.</p>
+                <button class="feature-button">
+                    View Projects <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Made by absent-minded genius Eren 🚀</p>
+            <p>Free of cost roadmap to AI mastery ✨</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add interactivity to step headers
+        document.querySelectorAll('.step-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === 'none' ? 'flex' : 'none';
+            });
+        });
+
+        // Create starry background with constellations
+        function createStarryBackground() {
+            const starsContainer = document.getElementById('stars');
+            
+            // Create stars
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                star.style.animation = `twinkle ${Math.random() * 5 + 3}s infinite alternate`;
+                starsContainer.appendChild(star);
+            }
+            
+            // Create constellations
+            for (let i = 0; i < 15; i++) {
+                const constellation = document.createElement('div');
+                constellation.className = 'constellation';
+                
+                const startX = Math.random() * 90 + 5;
+                const startY = Math.random() * 90 + 5;
+                const length = Math.random() * 50 + 20;
+                const angle = Math.random() * 360;
+                
+                constellation.style.left = startX + '%';
+                constellation.style.top = startY + '%';
+                constellation.style.width = length + 'px';
+                constellation.style.transform = `rotate(${angle}deg)`;
+                constellation.style.opacity = Math.random() * 0.3 + 0.1;
+                
+                starsContainer.appendChild(constellation);
+            }
+            
+            // Create occasional shooting stars
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    createShootingStar();
+                }
+            }, 3000);
+        }
+        
+        function createShootingStar() {
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            
+            const startY = Math.random() * 50;
+            shootingStar.style.top = startY + '%';
+            shootingStar.style.left = '0';
+            shootingStar.style.width = '100px';
+            shootingStar.style.opacity = '0';
+            
+            document.body.appendChild(shootingStar);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                document.body.removeChild(shootingStar);
+            }, 3000);
+        }
+        
+        // Add keyframes for twinkling
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes twinkle {
+                0% { opacity: 0.3; }
+                100% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize the background
+        createStarryBackground();
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Add click event to dropdowns for mobile
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown > .nav-link').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+/* Shared dark glass theme for Roadmap pages */
+:root {
+  --bg: #050607;
+  --bg-2: #07090d;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --accent-1: #7bd3ff;
+  --accent-2: #5eead4;
+  --text: #f7f9fb;
+  --muted: #cbd5e1;
+  --shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --blur: 14px;
+}
+
+* {
+  letter-spacing: 0.01em;
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, rgba(123, 211, 255, 0.16), transparent 32%),
+              radial-gradient(circle at 78% 10%, rgba(94, 234, 212, 0.12), transparent 30%),
+              radial-gradient(circle at 40% 70%, rgba(123, 211, 255, 0.1), transparent 34%),
+              radial-gradient(circle at 10% 90%, rgba(94, 234, 212, 0.08), transparent 28%),
+              var(--bg-2);
+  color: var(--text) !important;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.stars, .floating-particles, .particle, .shooting-star, .constellation {
+  display: none !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow) !important;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  padding: 32px 28px !important;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text) !important;
+  text-shadow: 0 0 24px rgba(123, 211, 255, 0.2);
+}
+
+h1 span, h2 span, .gradient-text {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p, li, span, a {
+  color: var(--muted) !important;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-1) !important;
+}
+
+.navbar, .nav-container, .nav-menu {
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32) !important;
+}
+
+.nav-menu {
+  gap: 6px !important;
+  padding: 10px !important;
+}
+
+.nav-link {
+  color: var(--text) !important;
+  border-radius: 14px !important;
+  padding: 8px 14px !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22) !important;
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2)) !important;
+  color: #041019 !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.dropdown-content {
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 1px solid var(--border) !important;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+}
+
+section, .section, .panel, .main-content, .content-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 24px !important;
+  box-shadow: var(--shadow) !important;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  position: relative;
+  overflow: hidden;
+}
+
+[class*="card"], [class*="Card"], [class*="-card"], .module, .module-card, .resource-card, .project-card, .feature-card, .community-card, .faq-item, .event-card, .ml-type-card {
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.32) !important;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+[class*="card"]:hover, [class*="Card"]:hover, [class*="-card"]:hover, .module:hover, .module-card:hover, .resource-card:hover, .project-card:hover, .feature-card:hover, .community-card:hover, .faq-item:hover, .event-card:hover, .ml-type-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4) !important;
+  border-color: var(--border-strong) !important;
+}
+
+button, .btn, .cta-button, .cta-btn, .primary-btn, .secondary-btn {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2)) !important;
+  color: #031018 !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 10px 16px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+button:hover, .btn:hover, .cta-button:hover, .cta-btn:hover, .primary-btn:hover, .secondary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.35) !important;
+  filter: brightness(1.05);
+}
+
+.badge, .tag {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  padding: 4px 10px !important;
+  font-size: 0.85rem !important;
+}
+
+input, select, textarea {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 10px 12px !important;
+}
+
+.progress-bar, .progress, .progress-fill {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 999px !important;
+  overflow: hidden;
+}
+
+.progress-fill, .progress-bar .fill, .progress .fill {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2)) !important;
+}
+
+.table, table {
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden;
+}
+
+table th, table td {
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  padding: 10px 12px !important;
+}
+
+a.button-link, a.cta, .link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2)) !important;
+  color: #041019 !important;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.button-link:hover, a.cta:hover, .link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.35);
+}
+
+footer {
+  color: var(--muted) !important;
+  border-top: 1px solid var(--border) !important;
+  padding-top: 20px !important;
+  margin-top: 40px !important;
+}
+
+/* Optional: soften star/particle overlays */
+.stars, .floating-particles {
+  opacity: 0.5 !important;
+}
